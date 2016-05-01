@@ -9,6 +9,8 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    //MARK:- Overriden methods
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
@@ -31,6 +33,8 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
+    
+    //MARK:- Helper methods
     
     
     //MARK:- Properties
