@@ -15,3 +15,7 @@ of aiding objects.
 - [ ] Obstacles
 - [ ] Aiding Blocks
 - [ ] Level navigation logic
+
+##TODO After MVP
+- [ ] Launch screen Logo.
+- [ ] Objects to rotate the ball around using a rope.
