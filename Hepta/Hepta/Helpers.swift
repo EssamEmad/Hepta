@@ -11,8 +11,8 @@ import UIKit
 
 class Helpers{
     
-    static func greatestNumberSmallerThanOne(tuple:(x:CGFloat, y:CGFloat)) -> (CGFloat, CGFloat){
+    static func greatestNumberSmallerThanOne(tuple:(x:CGFloat, y:CGFloat)) -> CGPoint{
         let angle = atan(abs(tuple.1 / tuple.0))
-        return (cos(angle),sin(angle))
+        return CGPoint(x: cos(angle),y: sin(angle))
     }
 }
