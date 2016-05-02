@@ -10,7 +10,7 @@ of aiding objects.
 
 ##TODO MVP
 - [x] Game UI
-- [ ] Ball Movement
+- [x] Ball Movement
 - [ ] End zone
 - [ ] Obstacles
 - [ ] Aiding Blocks
