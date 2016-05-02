@@ -10,7 +10,7 @@ of aiding objects.
 
 ##TODO MVP
 - [x] Game UI
-- [ ] Ball Movement
+- [x] Ball Movement
 - [ ] End zone
 - [ ] Obstacles
 - [ ] Aiding Blocks
@@ -19,3 +19,4 @@ of aiding objects.
 ##TODO After MVP
 - [ ] Launch screen Logo.
 - [ ] Objects to rotate the ball around using a rope.
+- [ ] Adding Gravity objects that attract the ball
