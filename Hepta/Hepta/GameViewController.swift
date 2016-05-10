@@ -9,13 +9,18 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
-
+class GameViewController: UIViewController , GameSceneDelegate {
+//    MARK:- Callbacks
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let scene = GameScene(fileNamed:"GameScene") {
+        currentLevel = 0 //Calls render level in the property observer
+        
+    }
+    
+    private func renderLevel(level: Int){
+        if let scene = GameScene(fileNamed:"Level\(level)") {
             // Configure the view.
+            scene.gameSceneDelegate = self
             let skView = self.view as! SKView
             skView.showsFPS = true
             skView.showsNodeCount = true
@@ -35,11 +40,7 @@ class GameViewController: UIViewController {
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
-        } else {
-            return .All
-        }
+        return .Portrait
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,4 +51,22 @@ class GameViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+//    MARK:- Helpers
+    
+    func onLevelPassed() {
+        currentLevel = currentLevel + 1
+    }
+    
+    func onLevelFailed() {
+        renderLevel(currentLevel)
+    }
+    
+    private var currentLevel = 0{
+        didSet{
+            self.renderLevel(currentLevel)
+        }
+    }
+    
+//    MARK:- Properties
 }

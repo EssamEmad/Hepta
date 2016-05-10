@@ -8,23 +8,24 @@
 
 import SpriteKit
 
+protocol GameSceneDelegate{
+    func onLevelPassed()
+    func onLevelFailed()
+}
+
 class GameScene: SKScene {
     
     struct Constants {
         static let MINIMUM_SWIPE: CGFloat = 20
     }
+    
+    
+    
     //MARK:- Overriden methods
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        if let someSpriteNode = self.childNodeWithName("Ball") as? Ball, reflector = self.childNodeWithName("Test Reflector") as? Reflector{
-            reflector.physicsBody?.dynamic = false 
-            ball = someSpriteNode
-            print("it is reflector")
-            ball?.physicsBody?.contactTestBitMask = ballCategory
-        
-        }
-
         self.physicsWorld.contactDelegate = self
+        setup()
 
     }
     
@@ -77,16 +78,26 @@ class GameScene: SKScene {
         return realDirection
     }
     
+//    MARK:- Helpers
+    
+    private func setup(){
+        if let someSpriteNode = self.childNodeWithName("Ball") as? Ball{
+            ball = someSpriteNode
+            ball?.physicsBody?.contactTestBitMask = ballCategory
+        }
+
+    }
     
     //MARK:- Properties
-    
+    var gameSceneDelegate: GameSceneDelegate?
+
     // We keep track of the flick motion start position to calculate
     // the swiping direction
     private var flickStartLocation:CGPoint? = nil
     private var ballMovementDirection: CGPoint?  = nil
     private var ball:Ball?
     
-    public let ballCategory: UInt32 = 0x1 << 1
+     let ballCategory: UInt32 = 0x1 << 1
 
     
 }
@@ -95,10 +106,13 @@ class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate{
     
     func didBeginContact(contact: SKPhysicsContact) {
-        if let reflector = contact.bodyA as? Reflector {
+        if let reflector = contact.bodyA.node as? Reflector {
             //do something with reflector
-        } else if let obstacle = contact.bodyA as? Obstacle{
-            //End game
+        } else if  contact.bodyB.node is Obstacle{
+            
+            gameSceneDelegate?.onLevelFailed()
+        } else if  contact.bodyB.node is Hole {
+            gameSceneDelegate?.onLevelPassed()
         }
     }
     
