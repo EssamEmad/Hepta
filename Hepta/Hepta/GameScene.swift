@@ -16,8 +16,12 @@ class GameScene: SKScene {
     //MARK:- Overriden methods
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        ball = self.childNodeWithName("Ball")
+        if let someSpriteNode = self.childNodeWithName("Ball") as? Ball, reflector = self.childNodeWithName("Test Reflector"){
+            reflector.physicsBody?.dynamic = false 
+            ball = someSpriteNode
+            
+        
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -26,23 +30,22 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if !isBallMoving {
+        if let ball = ball  {
+            if !ball.isMoving{
             if let start = flickStartLocation, end = touches.first?.locationInNode(self){
-                
-                ballMovementDirection = getBallMovementDirection(start, end: end)
-                isBallMoving = true
-                
-                
+                if let ballMovementDirection = getBallMovementDirection(start, end: end){
+                    self.ballMovementDirection = ballMovementDirection
+                ball.move(ballMovementDirection.x * 5,y: ballMovementDirection.y * 5)
+                ball.isMoving = true
+                }
+            }
             }
         }
     }
     
     override func update(currentTime: CFTimeInterval) {
-        if let ball = ball, ballDirection = ballMovementDirection {
-            let moveAction = SKAction.moveByX(ballDirection.x * 5,y: ballDirection.y * 5, duration: 0.0000000000001)
-            ball.runAction(moveAction)
-        }
-        
+//        if let ball = ball, ballDirection = ballMovementDirection {
+//            ball.move(ballDirection.x * 5,y: ballDirection.y * 5)        }
     }
     
     //MARK:- Helper methods
@@ -76,10 +79,8 @@ class GameScene: SKScene {
     // the swiping direction
     private var flickStartLocation:CGPoint? = nil
     private var ballMovementDirection: CGPoint?  = nil
-    private var ball:SKNode? = nil
+    private var ball:Ball?
     
-    
-    //MARK:- Flags
-    private var isBallMoving = false
+   
     
 }
