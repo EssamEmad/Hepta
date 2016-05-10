@@ -3,7 +3,7 @@
 //  Hepta
 //
 //  Created by Essam on 5/1/16.
-//  Copyright (c) 2016 Hepta Productions. All rights reserved.
+//  Copyright (c) 2016 Heifa Productions. All rights reserved.
 //
 
 import SpriteKit
@@ -16,12 +16,16 @@ class GameScene: SKScene {
     //MARK:- Overriden methods
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-        if let someSpriteNode = self.childNodeWithName("Ball") as? Ball, reflector = self.childNodeWithName("Test Reflector"){
+        if let someSpriteNode = self.childNodeWithName("Ball") as? Ball, reflector = self.childNodeWithName("Test Reflector") as? Reflector{
             reflector.physicsBody?.dynamic = false 
             ball = someSpriteNode
-            
+            print("it is reflector")
+            ball?.physicsBody?.contactTestBitMask = ballCategory
         
         }
+
+        self.physicsWorld.contactDelegate = self
+
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -46,6 +50,7 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
 //        if let ball = ball, ballDirection = ballMovementDirection {
 //            ball.move(ballDirection.x * 5,y: ballDirection.y * 5)        }
+        
     }
     
     //MARK:- Helper methods
@@ -81,6 +86,20 @@ class GameScene: SKScene {
     private var ballMovementDirection: CGPoint?  = nil
     private var ball:Ball?
     
-   
+    public let ballCategory: UInt32 = 0x1 << 1
+
+    
+}
+
+
+extension GameScene: SKPhysicsContactDelegate{
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        if let reflector = contact.bodyA as? Reflector {
+            //do something with reflector
+        } else if let obstacle = contact.bodyA as? Obstacle{
+            //End game
+        }
+    }
     
 }

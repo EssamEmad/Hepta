@@ -3,7 +3,7 @@
 //  Hepta
 //
 //  Created by Essam on 5/1/16.
-//  Copyright (c) 2016 Hepta Productions. All rights reserved.
+//  Copyright (c) 2016 Heifa Productions. All rights reserved.
 //
 
 import UIKit
