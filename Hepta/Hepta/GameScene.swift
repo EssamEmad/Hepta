@@ -10,7 +10,7 @@ import SpriteKit
 
 protocol GameSceneDelegate{
     func onLevelPassed()
-    func onLevelFailed()
+    func onLevelFailed(ball: Ball)
 }
 
 class GameScene: SKScene {
@@ -37,13 +37,13 @@ class GameScene: SKScene {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let ball = ball  {
             if !ball.isMoving{
-            if let start = flickStartLocation, end = touches.first?.locationInNode(self){
-                if let ballMovementDirection = getBallMovementDirection(start, end: end){
-                    self.ballMovementDirection = ballMovementDirection
-                ball.move(ballMovementDirection.x * 5,y: ballMovementDirection.y * 5)
-                ball.isMoving = true
+                if let start = flickStartLocation, end = touches.first?.locationInNode(self){
+                    if let ballMovementDirection = getBallMovementDirection(start, end: end){
+                        self.ballMovementDirection = ballMovementDirection
+                        ball.move(ballMovementDirection.x * 5,y: ballMovementDirection.y * 5)
+                        ball.isMoving = true
+                    }
                 }
-            }
             }
         }
     }
@@ -84,6 +84,8 @@ class GameScene: SKScene {
         if let someSpriteNode = self.childNodeWithName("Ball") as? Ball{
             ball = someSpriteNode
             ball?.physicsBody?.contactTestBitMask = ballCategory
+            ballInitialPosition = (ball?.position)!
+            
         }
 
     }
@@ -96,6 +98,7 @@ class GameScene: SKScene {
     private var flickStartLocation:CGPoint? = nil
     private var ballMovementDirection: CGPoint?  = nil
     private var ball:Ball?
+    private var ballInitialPosition: CGPoint?
     
      let ballCategory: UInt32 = 0x1 << 1
 
@@ -106,13 +109,13 @@ class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate{
     
     func didBeginContact(contact: SKPhysicsContact) {
+        print("collided")
         if let reflector = contact.bodyA.node as? Reflector {
             //do something with reflector
         } else if  contact.bodyB.node is Obstacle{
-            
-            gameSceneDelegate?.onLevelFailed()
+            gameSceneDelegate?.onLevelFailed(ball!)
         } else if  contact.bodyB.node is Hole {
-            gameSceneDelegate?.onLevelPassed()
+            //gameSceneDelegate?.onLevelFailed(ball!)
         }
     }
     

@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0E05F101CE502150031C667 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E05F0B1CE502150031C667 /* Ball.swift */; };
+		C0E05F111CE502150031C667 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E05F0C1CE502150031C667 /* Helpers.swift */; };
+		C0E05F121CE502150031C667 /* Hole.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E05F0D1CE502150031C667 /* Hole.swift */; };
+		C0E05F131CE502150031C667 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E05F0E1CE502150031C667 /* Obstacle.swift */; };
+		C0E05F141CE502150031C667 /* Reflector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E05F0F1CE502150031C667 /* Reflector.swift */; };
+		C0E05F161CE503570031C667 /* Level0.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0E05F151CE503570031C667 /* Level0.sks */; };
 		CE3CDA171CD60E4E00B84709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3CDA161CD60E4E00B84709 /* AppDelegate.swift */; };
-		CE3CDA191CD60E4E00B84709 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE3CDA181CD60E4E00B84709 /* GameScene.sks */; };
 		CE3CDA1B1CD60E4E00B84709 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3CDA1A1CD60E4E00B84709 /* GameScene.swift */; };
 		CE3CDA1D1CD60E4E00B84709 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3CDA1C1CD60E4E00B84709 /* GameViewController.swift */; };
 		CE3CDA201CD60E4E00B84709 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3CDA1E1CD60E4E00B84709 /* Main.storyboard */; };
@@ -36,9 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C0E05F0B1CE502150031C667 /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		C0E05F0C1CE502150031C667 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		C0E05F0D1CE502150031C667 /* Hole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hole.swift; sourceTree = "<group>"; };
+		C0E05F0E1CE502150031C667 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
+		C0E05F0F1CE502150031C667 /* Reflector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reflector.swift; sourceTree = "<group>"; };
+		C0E05F151CE503570031C667 /* Level0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level0.sks; sourceTree = "<group>"; };
 		CE3CDA131CD60E4E00B84709 /* Hepta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hepta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3CDA161CD60E4E00B84709 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE3CDA181CD60E4E00B84709 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		CE3CDA1A1CD60E4E00B84709 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CE3CDA1C1CD60E4E00B84709 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CE3CDA1F1CD60E4E00B84709 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,10 +112,15 @@
 			isa = PBXGroup;
 			children = (
 				CE3CDA161CD60E4E00B84709 /* AppDelegate.swift */,
-				CE3CDA181CD60E4E00B84709 /* GameScene.sks */,
+				C0E05F151CE503570031C667 /* Level0.sks */,
 				CE3CDA1A1CD60E4E00B84709 /* GameScene.swift */,
 				CE3CDA1C1CD60E4E00B84709 /* GameViewController.swift */,
 				CE3CDA1E1CD60E4E00B84709 /* Main.storyboard */,
+				C0E05F0B1CE502150031C667 /* Ball.swift */,
+				C0E05F0C1CE502150031C667 /* Helpers.swift */,
+				C0E05F0D1CE502150031C667 /* Hole.swift */,
+				C0E05F0E1CE502150031C667 /* Obstacle.swift */,
+				C0E05F0F1CE502150031C667 /* Reflector.swift */,
 				CE3CDA211CD60E4E00B84709 /* Assets.xcassets */,
 				CE3CDA231CD60E4E00B84709 /* LaunchScreen.storyboard */,
 				CE3CDA261CD60E4E00B84709 /* Info.plist */,
@@ -235,8 +250,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3CDA191CD60E4E00B84709 /* GameScene.sks in Resources */,
 				CE3CDA251CD60E4E00B84709 /* LaunchScreen.storyboard in Resources */,
+				C0E05F161CE503570031C667 /* Level0.sks in Resources */,
 				CE3CDA221CD60E4E00B84709 /* Assets.xcassets in Resources */,
 				CE3CDA201CD60E4E00B84709 /* Main.storyboard in Resources */,
 			);
@@ -263,8 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E05F141CE502150031C667 /* Reflector.swift in Sources */,
+				C0E05F131CE502150031C667 /* Obstacle.swift in Sources */,
+				C0E05F101CE502150031C667 /* Ball.swift in Sources */,
+				C0E05F121CE502150031C667 /* Hole.swift in Sources */,
 				CE3CDA1B1CD60E4E00B84709 /* GameScene.swift in Sources */,
 				CE3CDA1D1CD60E4E00B84709 /* GameViewController.swift in Sources */,
+				C0E05F111CE502150031C667 /* Helpers.swift in Sources */,
 				CE3CDA171CD60E4E00B84709 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +514,7 @@
 				CE3CDA411CD60E4E00B84709 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3CDA421CD60E4E00B84709 /* Build configuration list for PBXNativeTarget "HeptaTests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +523,7 @@
 				CE3CDA441CD60E4E00B84709 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3CDA451CD60E4E00B84709 /* Build configuration list for PBXNativeTarget "HeptaUITests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +532,7 @@
 				CE3CDA471CD60E4E00B84709 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
