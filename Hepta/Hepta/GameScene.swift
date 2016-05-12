@@ -25,6 +25,7 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         self.physicsWorld.contactDelegate = self
+        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         setup()
 
     }
@@ -116,6 +117,9 @@ extension GameScene: SKPhysicsContactDelegate{
             gameSceneDelegate?.onLevelFailed(ball!)
         } else if  contact.bodyB.node is Hole {
             //gameSceneDelegate?.onLevelFailed(ball!)
+        }
+        else if contact.bodyA.node is GameScene{
+            gameSceneDelegate?.onLevelFailed(ball!)
         }
     }
     
