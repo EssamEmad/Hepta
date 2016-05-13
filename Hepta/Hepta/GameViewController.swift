@@ -55,16 +55,17 @@ class GameViewController: UIViewController , GameSceneDelegate {
 //    MARK:- Helpers
     
     func onLevelPassed() {
-        
-        let action1 = SKAction.runBlock{
-            //ball winning animation
-        }
-        let action2 = SKAction.runBlock{
-            self.currentLevel = self.currentLevel + 1
-        }
-        
-        let newLevel = SKAction.sequence([action1, SKAction.waitForDuration(1.2), action2])
-        gameScene?.runAction(newLevel)
+//        
+//        let action1 = SKAction.runBlock{
+//            //ball winning animation
+//        }
+//        let action2 = SKAction.runBlock{
+//            self.currentLevel = self.currentLevel + 1
+//        }
+//        
+//        let newLevel = SKAction.sequence([action1, SKAction.waitForDuration(1.2), action2])
+//        gameScene?.runAction(newLevel)
+        currentLevel = currentLevel + 1
         
     }
     

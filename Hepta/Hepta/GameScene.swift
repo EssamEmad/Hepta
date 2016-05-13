@@ -82,12 +82,16 @@ class GameScene: SKScene {
 //    MARK:- Helpers
     
     private func setup(){
-        if let someSpriteNode = self.childNodeWithName("Ball") as? Ball{
-            ball = someSpriteNode
-            ball?.physicsBody?.contactTestBitMask = ballCategory
-            ballInitialPosition = (ball?.position)!
-            
+        self.enumerateChildNodesWithName("//*") { (node, stop ) in
+            if node.name == "Ball"{
+                self.ball = node as! Ball
+                self.ball?.physicsBody?.contactTestBitMask = self.ballCategory
+                self.ballInitialPosition = (self.ball?.position)!
+            }
         }
+        
+            
+        
 
     }
     
@@ -110,13 +114,10 @@ class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate{
     
     func didBeginContact(contact: SKPhysicsContact) {
-        print("collided")
-        if let reflector = contact.bodyA.node as? Reflector {
-            //do something with reflector
-        } else if  contact.bodyB.node is Obstacle{
+        if  contact.bodyB.node is Obstacle || contact.bodyB.node is Obstacle{
             gameSceneDelegate?.onLevelFailed(ball!)
-        } else if  contact.bodyB.node is Hole {
-            //gameSceneDelegate?.onLevelFailed(ball!)
+        } else if  contact.bodyB.node?.name == "Hole" || contact.bodyA.node?.name == "Hole"{
+            gameSceneDelegate?.onLevelPassed()
         }
         else if contact.bodyA.node is GameScene{
             gameSceneDelegate?.onLevelFailed(ball!)
