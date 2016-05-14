@@ -12,12 +12,8 @@ import SpriteKit
 class Ball: SKSpriteNode {
     
     func move(x:CGFloat, y:CGFloat){
-//        dx = x
-//        dy = y
-//        let moveAction = SKAction.moveByX(x,y: y, duration: 0.0000000000001)
-//        runAction(moveAction)
         
-        self.physicsBody?.applyImpulse(CGVectorMake(x * 5,y * 5))
+        self.physicsBody?.applyImpulse(CGVectorMake(x * 2.5,y * 2.5))
         
         
     }

@@ -49,11 +49,7 @@ class GameScene: SKScene {
         }
     }
     
-    override func update(currentTime: CFTimeInterval) {
-//        if let ball = ball, ballDirection = ballMovementDirection {
-//            ball.move(ballDirection.x * 5,y: ballDirection.y * 5)        }
-        
-    }
+
     
     //MARK:- Helper methods
     
