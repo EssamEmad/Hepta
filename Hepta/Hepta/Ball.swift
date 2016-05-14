@@ -17,7 +17,7 @@ class Ball: SKSpriteNode {
 //        let moveAction = SKAction.moveByX(x,y: y, duration: 0.0000000000001)
 //        runAction(moveAction)
         
-        self.physicsBody?.applyImpulse(CGVectorMake(x * 10,y * 10))
+        self.physicsBody?.applyImpulse(CGVectorMake(x * 5,y * 5))
         
         
     }

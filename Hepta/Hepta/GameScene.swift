@@ -114,13 +114,15 @@ class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate{
     
     func didBeginContact(contact: SKPhysicsContact) {
-        if  contact.bodyB.node is Obstacle || contact.bodyB.node is Obstacle{
+        if  contact.bodyB.node is Obstacle || contact.bodyA.node is Obstacle{
             gameSceneDelegate?.onLevelFailed(ball!)
         } else if  contact.bodyB.node?.name == "Hole" || contact.bodyA.node?.name == "Hole"{
             gameSceneDelegate?.onLevelPassed()
         }
         else if contact.bodyA.node is GameScene{
-            gameSceneDelegate?.onLevelFailed(ball!)
+            if let ball = ball {
+            gameSceneDelegate?.onLevelFailed(ball)
+            }
         }
     }
     

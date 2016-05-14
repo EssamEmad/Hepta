@@ -13,12 +13,17 @@ class GameViewController: UIViewController , GameSceneDelegate {
 //    MARK:- Callbacks
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentLevel = 0 //Calls render level in the property observer
+        if let level = Helpers.getStoredLevel() {
+            currentLevel = level
+        } else {
+            currentLevel = 0 //Calls render level in the property observer
+        }
         
     }
     
     private func renderLevel(level: Int){
         if let scene = GameScene(fileNamed:"Level\(level)") {
+            Helpers.setLevel(level)
             gameScene = scene
             // Configure the view.
             scene.gameSceneDelegate = self
@@ -86,5 +91,6 @@ class GameViewController: UIViewController , GameSceneDelegate {
             self.renderLevel(currentLevel)
         }
     }
+
     private var gameScene: GameScene?
 }
