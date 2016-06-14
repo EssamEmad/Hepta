@@ -11,10 +11,10 @@ of aiding objects.
 ##TODO MVP
 - [x] Game UI
 - [x] Ball Movement
-- [ ] End zone
-- [ ] Obstacles
-- [ ] Aiding Blocks
-- [ ] Level navigation logic
+- [x] End zone
+- [x] Obstacles
+- [x] Aiding Blocks
+- [x] Level navigation logic
 
 ##TODO After MVP
 - [ ] Launch screen Logo.
